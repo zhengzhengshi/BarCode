@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:DeviceManager"
         mc:Ignorable="d"
         Title="资产管理系统" Height="350" Width="525">
+
+
+
+
     <Grid>
         <TabControl Margin="5" TabStripPlacement="Top"  >
             <TabItem Header="批量生成" Name="TabItem1" >
@@ -28,15 +32,22 @@
                 </Grid>
             </TabItem>
             <TabItem Header="数据同步"  Name="TabItem3">
-
+                <Button x:Name="btn_sync" Content="导入数据文件" HorizontalAlignment="Left" Margin="34,23,0,0" VerticalAlignment="Top" Width="75" Click="ImportDatabase"/>
             </TabItem>
             <TabItem Header="查询"  Name="TabItem4">
+                
+                <DataGrid x:Name="DataGrid1" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="221" Width="478">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="名称"/>
+                    </DataGrid.Columns>
+                </DataGrid>
 
             </TabItem>
 
             <TabItem Header="其他"  Name="TabItem5">
-                <TextBlock  Margin="10"  Text="关于作者" VerticalAlignment="Top"/>
+                <TextBlock  Margin="10"  Text="联系作者" VerticalAlignment="Top"/>
             </TabItem>
         </TabControl>
+        
     </Grid>
 </Window>

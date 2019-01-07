@@ -30,6 +30,11 @@ using System.Configuration;
 using System.Xml;
 using System.Diagnostics;
 
+
+using System.Data.SQLite;
+using System.Data;
+using System.Data.Common;
+
 namespace DeviceManager
 {
     /// <summary>
@@ -49,6 +54,8 @@ namespace DeviceManager
             SourceInitialized += HandleInitialized;
 
             doc = new XmlDocument();
+
+
             doc.Load("./config.xml");
 
             // 3.读取你指定的节点
@@ -400,5 +407,15 @@ namespace DeviceManager
             }
            image1.Source= GenerateOneBarcode(gen_number.Text, 512, 150, 0);
         }
+
+
+
+
+        private void ImportDatabase(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }
