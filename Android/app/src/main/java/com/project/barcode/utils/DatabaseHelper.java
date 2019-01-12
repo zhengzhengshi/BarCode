@@ -1,4 +1,4 @@
-package com.project.barcode;
+package com.project.barcode.utils;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

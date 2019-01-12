@@ -5,10 +5,10 @@
 package com.project.barcode;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.project.barcode.mvp.AssetInfo;
 import com.project.barcode.mvp.MainPresenter;
@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mMainPresenter = new MainPresenter(this);
         mMainPresenter.createDb();
-        mMainPresenter.updateFragment(new ScanFragment());
+        MainFragment mainFragment = new MainFragment();
+        mainFragment.setPresenter(mMainPresenter);
+        mMainPresenter.updateFragment(mainFragment);
     }
 
     @Override
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         long scanCode = mMainPresenter.getScanResult(requestCode, resultCode, data);
         if (scanCode < 0) {
+            Toast.makeText(this, "条形码错误,请重新扫描", Toast.LENGTH_LONG).show();
             return;
         }
         AssetInfo info = mMainPresenter.getAssetInfo(scanCode);
